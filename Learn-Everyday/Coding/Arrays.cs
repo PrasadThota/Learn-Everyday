@@ -9,21 +9,23 @@ namespace Coding
 {
     public static class Arrays
     {
+        public delegate int[] TSDelegate(int[] sArr, int target);
+
         /// <summary>
         /// Tests for TwoSum
         /// </summary>
-        public static void TwoSumRun()
+        public static void TwoSumRun(TSDelegate TSFunc)
         {
             var array1 = new int[] { 1, 4, 6, 9, 10 };
             int[] sumArray = null;
 
             var array2 = new int[] { 3, 4 };
-            sumArray = TwoSumBF(array2, 7);
+            sumArray = TSFunc(array2, 7);
 
             var array3 = new int[] { 5, 9, -15, -10, 25, 64, 100, 200 };
-            sumArray = TwoSumBF(array3, 15);
-            sumArray = TwoSumBF(array3, 300);
-            sumArray = TwoSumBF(array3, 14);
+            sumArray = TSFunc(array3, 15);
+            sumArray = TSFunc(array3, 300);
+            sumArray = TSFunc(array3, 14);
 
             //var array = new int[] { };
             //sumArray = TwoSum();
@@ -75,5 +77,50 @@ namespace Coding
             return sumIndices;
         }
 
+        /// <summary>
+        /// Solves the TwoSum problem using a hashtable.
+        /// </summary>
+        /// <param name="sArr"></param>
+        /// <param name="targetSum"></param>
+        /// <returns></returns>
+        public static int[] TwoSumHF(
+            int[] sArr,
+            int targetSum
+            )
+        {
+            var tsArr = new int[2];
+            string result = null;
+            var nMap = new Dictionary<int, int>();
+
+            Debug.Assert(sArr.Length >= 2);
+
+            for (int idx = 0; idx < sArr.Length; idx++)
+            {
+                int complement = targetSum - sArr[idx];
+
+                if (nMap.ContainsKey(complement))
+                {
+                    tsArr[0] = nMap[complement];
+                    tsArr[1] = idx;
+
+                    result = String.Format(
+                            "\n Target Sum : {0} \n" +
+                            "\t First : {1} @ {2} \n\t Second : {3} @ {4} \n",
+                           targetSum,
+                           complement,  tsArr[0], complement, 
+                           sArr[idx], tsArr[1] 
+                           );
+                    break;
+                }
+                else
+                {
+                    nMap.Add(sArr[idx], idx);
+                }
+            }
+
+            Console.WriteLine(result);
+            return tsArr;
+
+        }
     }
 }

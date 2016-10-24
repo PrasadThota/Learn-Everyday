@@ -12,7 +12,7 @@ namespace Coding
         {
             #region ARRAYS
 
-            Arrays.TwoSumRun();
+            Arrays.TwoSumRun(Arrays.TwoSumHF);
 
             #endregion
             Console.ReadLine();
