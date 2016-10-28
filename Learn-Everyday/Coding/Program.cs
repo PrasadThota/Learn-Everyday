@@ -10,11 +10,15 @@ namespace Coding
     {
         static void Main(string[] args)
         {
-            #region ARRAYS
-
-            Arrays.TwoSumRun(Arrays.TwoSumHF);
-
+            #region STRINGS
+            StringManipulation.LongestSubstringWithNoRepeatingCharRun();
             #endregion
+
+#region ARRAYS
+#if false
+            Arrays.TwoSumRun(Arrays.TwoSumHF);
+#endif
+#endregion
             Console.ReadLine();
         }
     }
