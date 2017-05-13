@@ -15,10 +15,16 @@ namespace Coding
             //string[] names = new string[] { "Matt", "Joanne", "Robert" };
 
             var testStrings = new string[]
-                {"foo",
+                {
+                 "abracadabra",
+                 "foo",
                 "google",
                 "Microsoft",
                 "abcqacqbzqlmn",
+                "aaaa",
+                "a",
+                "panama canal",
+                "abracadabra"
                 };
             foreach (var str in testStrings)
             {
@@ -40,7 +46,10 @@ namespace Coding
 
             Debug.Assert( !String.IsNullOrEmpty(inStr) );
 
-            if (strLen == 1)       {              return inStr;            }
+            if (strLen <= 1)
+            {
+                return inStr;
+            }
 
             int st = 0, cst = 0;
             int end = 0, cend = 0;
@@ -57,14 +66,20 @@ namespace Coding
                 }
                 else
                 {
+                    //the most recent occurence of this char in the string
                     int dupIndex = chMap[ch];
+
                     UpdateSubstringIndices(idx, dupIndex, ref cst, ref cend, ref st, ref end);
 
                     // remove charecter from the char map that don't belong to the current substring
+                    // The map now has chars only in the new substring.
                     for (int i = st; i < dupIndex; i++)
                     {
                         chMap.Remove(inStr[i]);
                     }
+
+                    // update the location of the char in the hashmap. This operation has to be after the remove operation.
+                    chMap[ch] = idx;
                 }
             }
             
@@ -92,7 +107,7 @@ namespace Coding
         {
             // update st and end. These now hold the longest substring we have seen thus far
             int prevSSLen = end - st + 1;
-            int curSSLen =  cIdx - cIdx;
+            int curSSLen =  cIdx - cSt + 1;
             if (curSSLen >  prevSSLen)
             {
                 st = cSt;
