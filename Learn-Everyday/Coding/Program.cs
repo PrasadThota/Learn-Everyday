@@ -11,14 +11,20 @@ namespace Coding
         static void Main(string[] args)
         {
             #region STRINGS
-            StringManipulation.LongestSubstringWithNoRepeatingCharRun();
+            //StringManipulation.LongestSubstringWithNoRepeatingCharRun();
             #endregion
 
-#region ARRAYS
-#if false
-            Arrays.TwoSumRun(Arrays.TwoSumHF);
-#endif
-#endregion
+            #region ARRAYS
+
+            //Arrays.TwoSumRun(Arrays.TwoSumHF);
+
+            #endregion
+
+            #region THREADS
+            var server = new Server();
+            server.DoWork();
+            #endregion
+
             Console.ReadLine();
         }
     }
