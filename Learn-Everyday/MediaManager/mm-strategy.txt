@@ -1,0 +1,91 @@
+Media Manager
+
+Base it on a few threads, that perform somewhat independent threads.
+
+All of them work off of a single queue of items to process.
+
+High level threads.
+- T1 to search the machine and add the pictures and movies to a queue.
+- T1 also processes them, and adds metadata (define what this is) to each media element.
+	- DateTaken
+	- source location
+	- Dest location
+	
+- T2 walks the que, and copies the media element to the detination location.
+	- As it finishes the copy it emits a summary element to the 'Summary que'
+	- Summary element contains the following
+		- Size of the file, time elapsed during the copy
+	- uber summary contains the following
+		- Total number of images processed 
+		- Total time in seconds to process images
+		- Total time spent copying
+		
+		- Same three elements for movies.
+	[OPEN] - How does T1 notfify T2
+
+- T3 - a summarizing thread goes through the summary que, and writes this out to an XML file
+
+- Once all of these threads are done processing, emit the meta summary at the top of the file and exit.
+
+Write the program using basic queues, locks
+Write the same program using BoundedCollection<T>
+
+############
+MediaTask Class
+############
+It is a metadata class holding information about the media object that needs to be processed. Contains the following meta data info
+
+- source filename
+- Date the media item was created (image or movie)
+- Amount of time taken to process the image/video
+- Amount of time taken to copy the media item to its final destination
+- Destination data
+	- List of destinations that the media element was copied to
+	- time take for the copy.
+
+
+############
+Destination handling
+############
+
+Copies media element to all its destinations, and updates the MediaTask with the following
+- List of locations the media element was copied to
+- Time taken for the total copy operation.
+
+If the destiation folders are missing, creates the necesarray folders. 
+
+
+
+############
+ReportGenerator class
+############
+Once DestinationHandler is done copying the files over, ReportGeneator processes the media element to generate the following data
+
+- Images for the month
+	- Time taken to process all images
+	- Time taken to copy all images
+
+- Videos for the month
+	- Time for processing
+	- Time for copying
+
+Total 
+	Images handled
+		- Total images handled this iteration
+		- Average time for processing each image
+		- Average time for copy for each image
+	
+	Videos handled
+		- Total images handled this iteration
+		- Average time for processing each image
+		- Average time for copy for each image
+
+
+
+############
+Final Checker
+############
+- Does a final scan of the media, and deletes all the source images that have been successfully copied over to thier destinations.
+
+############
+############

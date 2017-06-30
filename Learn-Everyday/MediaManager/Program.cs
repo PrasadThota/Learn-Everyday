@@ -16,6 +16,8 @@ namespace MediaManager
             server.DoWork();
             #endregion
 
+            Console.ReadLine();
+
         }
     }
 }
