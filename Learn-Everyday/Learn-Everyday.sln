@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding", "Coding\Coding.csproj", "{909AF47A-7C00-463A-81AF-E7793D6C9D42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaManager", "MediaManager\MediaManager.csproj", "{3E578402-4CE5-49CC-9C29-6A2C03E5262A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAPI", "TodoAPI\TodoAPI.csproj", "{D4A5AA74-1F94-4006-9049-9F150B34FA64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{3E578402-4CE5-49CC-9C29-6A2C03E5262A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E578402-4CE5-49CC-9C29-6A2C03E5262A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E578402-4CE5-49CC-9C29-6A2C03E5262A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A5AA74-1F94-4006-9049-9F150B34FA64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A5AA74-1F94-4006-9049-9F150B34FA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A5AA74-1F94-4006-9049-9F150B34FA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A5AA74-1F94-4006-9049-9F150B34FA64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C33CECD-7367-4FE1-B45A-A6AD76F1CDD1}
 	EndGlobalSection
 EndGlobal
